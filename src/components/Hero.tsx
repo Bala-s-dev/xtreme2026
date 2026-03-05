@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, MapPin, Clock, Calendar, Rocket } from "lucide-react"
+import { ChevronDown, MapPin, Clock, Calendar, Utensils } from "lucide-react"
 import Countdown from "./Countdown"
 
 export default function Hero() {
@@ -45,8 +45,8 @@ export default function Hero() {
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-24 pb-12">
       <div className="z-10 max-w-5xl mx-auto space-y-6 md:space-y-10">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] md:text-xs font-headline tracking-widest uppercase animate-pulse">
-            <Rocket className="w-3 h-3" /> LAUNCHING MARCH 27, 2026
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] md:text-xs font-headline tracking-widest uppercase">
+            <Calendar className="w-3 h-3" /> MARCH 27, 2026 • <Utensils className="w-3 h-3 ml-1" /> LUNCH PROVIDED
           </div>
           <h2 className="text-foreground/60 font-headline tracking-[0.3em] md:tracking-[0.5em] text-[10px] sm:text-xs md:text-sm uppercase">
             Department of Computer Science & Engineering Presents
@@ -63,7 +63,7 @@ export default function Hero() {
         </div>
 
         <div className="py-2 md:py-6 w-full overflow-hidden">
-          <div className="text-[10px] font-headline text-accent/40 uppercase tracking-[0.5em] mb-4">Countdown to Launch</div>
+          <div className="text-[10px] font-headline text-accent/40 uppercase tracking-[0.5em] mb-4">Event Starts In</div>
           <Countdown />
         </div>
 
@@ -104,7 +104,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Parallax elements */}
       <div className="hidden sm:block absolute top-[20%] left-[10%] w-24 h-24 md:w-32 md:h-32 rounded-full bg-accent/10 blur-3xl animate-float" />
       <div className="hidden sm:block absolute bottom-[20%] right-[10%] w-32 h-32 md:w-48 md:h-48 rounded-full bg-primary/10 blur-3xl animate-float" style={{ animationDelay: '2s' }} />
 

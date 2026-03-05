@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
-import { CheckCircle2, Send } from "lucide-react"
+import { CheckCircle2, Send, Utensils } from "lucide-react"
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -50,7 +50,9 @@ export default function Registration() {
           
           <div className="relative z-10 text-center mb-10 md:mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black font-headline text-gradient mb-3 md:mb-4 uppercase">SECURE YOUR SPOT</h2>
-            <p className="text-foreground/60 tracking-widest text-[10px] md:text-sm uppercase font-headline">Limited registrations available</p>
+            <div className="flex items-center justify-center gap-2 text-accent/80 font-headline tracking-widest text-[8px] md:text-[10px] uppercase">
+              <Utensils className="w-3 h-3" /> Registration includes Networking Lunch
+            </div>
           </div>
 
           {isSuccess ? (
