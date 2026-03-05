@@ -1,11 +1,11 @@
 "use client"
 
 const timeline = [
-  { time: "08:30 AM", title: "Inauguration", desc: "Welcome address and traditional lighting of the lamp." },
-  { time: "10:00 AM", title: "Technical Events Round 1", desc: "Coding contests and paper presentations begin." },
-  { time: "01:00 PM", title: "Networking Lunch", desc: "Interact with peers and industrial guests." },
-  { time: "02:00 PM", title: "Premium Workshops", desc: "Hands-on sessions in parallel tracks." },
-  { time: "04:30 PM", title: "Valedictory & Prizes", desc: "Announcement of winners and closing ceremony." }
+  { time: "09:00 AM", title: "Inauguration", desc: "Welcome address and traditional lighting of the lamp at FX Main Auditorium." },
+  { time: "10:30 AM", title: "Technical Arena Round 1", desc: "Coding contests, paper presentations, and initial project demonstrations begin." },
+  { time: "01:00 PM", title: "Networking Lunch", desc: "Fuel up and interact with peers, faculty, and industry experts." },
+  { time: "02:00 PM", title: "Event Finales", desc: "Final evaluation rounds for all technical competitions." },
+  { time: "04:30 PM", title: "Valedictory & Awards", desc: "Grand prize distribution and closing ceremony." }
 ]
 
 export default function Schedule() {

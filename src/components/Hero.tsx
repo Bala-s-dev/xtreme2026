@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, MapPin, Clock, Calendar } from "lucide-react"
 import Countdown from "./Countdown"
 
 export default function Hero() {
@@ -61,27 +61,38 @@ export default function Hero() {
           <Countdown />
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           <h3 className="text-lg md:text-2xl font-headline text-accent/80 tracking-widest uppercase">
             Francis Xavier Engineering College
           </h3>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-foreground/60 text-sm md:text-base font-medium">
+          <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 md:gap-10 text-foreground/60 text-sm md:text-base font-medium">
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-secondary neon-glow-purple" />
+              <Calendar className="w-4 h-4 text-secondary" />
               MARCH 27, 2026
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent neon-glow-cyan" />
-              TIRUNELVELI, TN
+              <Clock className="w-4 h-4 text-accent" />
+              09:00 AM
+            </span>
+            <span className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-primary" />
+              FX MAIN AUDITORIUM
             </span>
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
-          <Button className="h-14 px-10 text-lg font-headline tracking-widest bg-accent hover:bg-accent/80 text-background rounded-full neon-glow-cyan transition-all duration-300 transform hover:scale-105">
+          <Button 
+            onClick={() => document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' })}
+            className="h-14 px-10 text-lg font-headline tracking-widest bg-accent hover:bg-accent/80 text-background rounded-full neon-glow-cyan transition-all duration-300 transform hover:scale-105"
+          >
             REGISTER NOW
           </Button>
-          <Button variant="outline" className="h-14 px-10 text-lg font-headline tracking-widest border-primary text-primary hover:bg-primary/10 rounded-full transition-all duration-300 transform hover:scale-105" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+          <Button 
+            variant="outline" 
+            className="h-14 px-10 text-lg font-headline tracking-widest border-primary text-primary hover:bg-primary/10 rounded-full transition-all duration-300 transform hover:scale-105" 
+            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             EXPLORE ARENA
           </Button>
         </div>
