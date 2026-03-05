@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState, useEffect } from "react"
@@ -15,6 +16,7 @@ const navLinks = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const googleFormUrl = "https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2F1W9KAAuFQ--g223C8v_VN1JH46qBhgnNlVQ4a7sAovR4%2Fedit%3Fusp%3Dsharing_eil_se_dm%26ts%3D69a6b308&source=gmail&ust=1772772623658000&usg=AOvVaw06xDHGFj-W_xTf_H2fHc2v";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,8 +45,8 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <Button variant="outline" className="border-accent text-accent hover:bg-accent hover:text-background font-headline tracking-widest neon-glow-cyan">
-            REGISTER
+          <Button asChild variant="outline" className="border-accent text-accent hover:bg-accent hover:text-background font-headline tracking-widest neon-glow-cyan">
+            <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">REGISTER</a>
           </Button>
         </div>
 
@@ -67,8 +69,8 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
-          <Button variant="outline" className="border-accent text-accent w-64 h-12 font-headline tracking-widest neon-glow-cyan">
-            REGISTER
+          <Button asChild variant="outline" className="border-accent text-accent w-64 h-12 font-headline tracking-widest neon-glow-cyan">
+            <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">REGISTER</a>
           </Button>
         </div>
       </div>

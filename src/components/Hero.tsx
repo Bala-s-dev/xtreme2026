@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useEffect, useState } from "react"
@@ -10,6 +11,8 @@ export default function Hero() {
   const [isDeleting, setIsDeleting] = useState(false)
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(150)
+  
+  const googleFormUrl = "https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2F1W9KAAuFQ--g223C8v_VN1JH46qBhgnNlVQ4a7sAovR4%2Fedit%3Fusp%3Dsharing_eil_se_dm%26ts%3D69a6b308&source=gmail&ust=1772772623658000&usg=AOvVaw06xDHGFj-W_xTf_H2fHc2v";
 
   const phrases = [
     "Where Innovation Meets Intelligence",
@@ -46,7 +49,7 @@ export default function Hero() {
       <div className="z-10 max-w-5xl mx-auto space-y-6 md:space-y-10">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] md:text-xs font-headline tracking-widest uppercase">
-            <Calendar className="w-3 h-3" /> MARCH 27, 2026 • <Utensils className="w-3 h-3 ml-1" /> LUNCH PROVIDED
+            <Utensils className="w-3 h-3" /> LUNCH WILL BE PROVIDED • MARCH 27, 2026
           </div>
           <h2 className="text-foreground/60 font-headline tracking-[0.3em] md:tracking-[0.5em] text-[10px] sm:text-xs md:text-sm uppercase">
             Department of Computer Science & Engineering Presents
@@ -89,10 +92,10 @@ export default function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-4 md:pt-8">
           <Button 
-            onClick={() => document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' })}
+            asChild
             className="w-full sm:w-auto h-12 md:h-14 px-8 md:px-10 text-base md:text-lg font-headline tracking-widest bg-accent hover:bg-accent/80 text-background rounded-full neon-glow-cyan transition-all duration-300 transform hover:scale-105"
           >
-            REGISTER NOW
+            <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">REGISTER NOW</a>
           </Button>
           <Button 
             variant="outline" 

@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from "react"
@@ -67,6 +68,7 @@ const technicalEvents = [
 
 export default function Events() {
   const [selectedEvent, setSelectedEvent] = useState<any>(null)
+  const googleFormUrl = "https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2F1W9KAAuFQ--g223C8v_VN1JH46qBhgnNlVQ4a7sAovR4%2Fedit%3Fusp%3Dsharing_eil_se_dm%26ts%3D69a6b308&source=gmail&ust=1772772623658000&usg=AOvVaw06xDHGFj-W_xTf_H2fHc2v";
 
   return (
     <section id="events" className="py-16 md:py-24 relative">
@@ -126,20 +128,6 @@ export default function Events() {
             </div>
           ))}
         </div>
-
-        <div className="mt-12 md:mt-20 text-center">
-          <div className="glass inline-flex flex-col md:flex-row items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl md:rounded-3xl border-white/5 w-full md:w-auto">
-            <div className="text-center md:text-left">
-              <div className="text-[10px] font-headline text-foreground/40 uppercase tracking-widest mb-1">Total Events</div>
-              <div className="text-lg md:text-xl font-headline text-foreground">06 Specialized Tracks</div>
-            </div>
-            <div className="hidden md:block w-px h-12 bg-white/10" />
-            <div className="text-center md:text-left">
-              <div className="text-[10px] font-headline text-foreground/40 uppercase tracking-widest mb-1">Participation</div>
-              <div className="text-lg md:text-xl font-headline text-accent">Teams & Individuals</div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <Dialog open={!!selectedEvent} onOpenChange={() => setSelectedEvent(null)}>
@@ -179,13 +167,10 @@ export default function Events() {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button 
-                onClick={() => {
-                  setSelectedEvent(null)
-                  document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' })
-                }}
+                asChild
                 className="flex-1 h-12 md:h-14 bg-accent text-background font-black font-headline tracking-widest uppercase hover:bg-accent/80 transition-all rounded-xl md:rounded-2xl text-base md:text-lg"
               >
-                REGISTER NOW
+                <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">REGISTER NOW</a>
               </Button>
               <Button variant="outline" className="flex-1 h-12 md:h-14 border-white/10 hover:bg-white/5 font-headline tracking-widest uppercase rounded-xl md:rounded-2xl text-xs">
                 RULES BROCHURE

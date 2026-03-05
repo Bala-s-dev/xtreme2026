@@ -1,34 +1,21 @@
+
 "use client"
 
 import { useEffect, useState, useRef } from "react"
-import { getTechTrendSpotlight } from "@/ai/flows/ai-driven-tech-trend-spotlight"
-import { Sparkles, Users, Trophy, School, Terminal } from "lucide-react"
+import { Users, Trophy, School, Terminal } from "lucide-react"
 
 const stats = [
   { label: "PARTICIPANTS", value: 1000, icon: Users, suffix: "+" },
-  { label: "EVENTS", value: 25, icon: Trophy, suffix: "+" },
+  { label: "EVENTS", value: 6, icon: Trophy, suffix: "" },
   { label: "COLLEGES", value: 10, icon: School, suffix: "+" },
   { label: "PRIZE POOL", value: 50000, icon: Terminal, prefix: "₹", suffix: "+" },
 ]
 
 export default function About() {
-  const [insight, setInsight] = useState<string>("Loading future insights...")
   const [counts, setCounts] = useState(stats.map(() => 0))
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    async function fetchInsight() {
-      try {
-        const result = await getTechTrendSpotlight({ 
-          focusAreas: ["AI & Machine Learning", "Cybersecurity", "Blockchain", "Quantum Computing"] 
-        })
-        setInsight(result.insight)
-      } catch (err) {
-        setInsight("Innovation is the heartbeat of Xtreme 26, where the next generation of tech leaders is born.")
-      }
-    }
-    fetchInsight()
-
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         stats.forEach((stat, i) => {
@@ -86,24 +73,10 @@ export default function About() {
           ))}
         </div>
 
-        {/* AI Insight Box */}
-        <div className="glass p-6 md:p-12 rounded-2xl md:rounded-3xl relative overflow-hidden border-accent/20">
-          <div className="md:absolute md:top-0 md:right-0 p-0 md:p-4 mb-6 md:mb-0">
-            <div className="bg-accent/20 text-accent w-fit px-3 py-1 rounded-full text-[10px] font-headline tracking-widest flex items-center gap-2">
-              <Sparkles className="w-3 h-3" /> AI GENERATED TREND
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
-            <div className="w-full md:w-1/3">
-              <h3 className="text-xl md:text-3xl font-headline text-accent mb-2 md:mb-4">Tech Spotlight</h3>
-              <p className="text-foreground/60 text-xs md:text-sm">Our intelligent system curates daily insights for symposium attendees.</p>
-            </div>
-            <div className="w-full md:w-2/3">
-              <div className="text-base md:text-2xl font-medium italic border-l-4 border-accent pl-4 md:pl-6 py-1 md:py-2 leading-relaxed text-foreground/90">
-                "{insight}"
-              </div>
-            </div>
-          </div>
+        <div className="glass p-8 md:p-12 rounded-2xl md:rounded-3xl border-white/5 text-center">
+          <p className="text-lg md:text-2xl font-headline text-foreground/80 leading-relaxed italic">
+            "Pushing the boundaries of technical innovation through collaboration and competition."
+          </p>
         </div>
       </div>
     </section>
