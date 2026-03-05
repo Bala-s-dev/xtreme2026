@@ -4,7 +4,7 @@ import { Cpu } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="pt-24 relative overflow-hidden">
+    <footer className=" relative overflow-hidden">
       <div className="wave-footer">
         <div className="wave wave1"></div>
         <div className="wave wave2"></div>

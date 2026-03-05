@@ -3,7 +3,7 @@
 const timeline = [
   {
     time: '09:00 AM',
-    title: 'Inauguration',
+    title: 'Participant Verification and Inauguration',
     desc: 'Official commencement of XTREME 26 with the welcome address and lighting of the lamp at FX Main Auditorium.',
   },
   {
@@ -17,7 +17,7 @@ const timeline = [
     desc: 'A scheduled break for all participants to refuel and network. Lunch is provided at the venue.',
   },
   {
-    time: '01:45 PM',
+    time: '01:50 PM',
     title: 'Afternoon Arena',
     desc: 'High-intensity sessions for Bug Bounding, Quiz War, and Prompt Battle begin.',
   },

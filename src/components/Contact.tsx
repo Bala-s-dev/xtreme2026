@@ -56,19 +56,20 @@ export default function Contact() {
 
             <div className="flex justify-center md:justify-start gap-4 md:gap-6">
               <a
-                href="#"
+                href="https://www.instagram.com/fx_ec/"
+                target="_blank"
                 className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass flex items-center justify-center text-accent hover:bg-accent hover:text-background hover:neon-glow-cyan transition-all duration-300"
               >
                 <Instagram className="w-5 h-5 md:w-6 md:h-6" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/school/fxengg"
                 className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:neon-glow-purple transition-all duration-300"
               >
                 <Linkedin className="w-5 h-5 md:w-6 md:h-6" />
               </a>
               <a
-                href="#"
+                href="#contact"
                 className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass flex items-center justify-center text-green-400 hover:bg-green-400 hover:text-background transition-all duration-300 shadow-green-400/10 shadow-lg"
               >
                 <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />

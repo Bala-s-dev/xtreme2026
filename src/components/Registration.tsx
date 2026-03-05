@@ -1,44 +1,67 @@
+'use client';
 
-"use client"
-
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Utensils } from "lucide-react"
+import { Button } from '@/components/ui/button';
+import { ExternalLink, Utensils } from 'lucide-react';
 
 export default function Registration() {
-  const googleFormUrl = "https://www.google.com/url?q=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2F1W9KAAuFQ--g223C8v_VN1JH46qBhgnNlVQ4a7sAovR4%2Fedit%3Fusp%3Dsharing_eil_se_dm%26ts%3D69a6b308&source=gmail&ust=1772772623658000&usg=AOvVaw06xDHGFj-W_xTf_H2fHc2v";
+  const googleFormUrl =
+    'https://docs.google.com/forms/d/1W9KAAuFQ--g223C8v_VN1JH46qBhgnNlVQ4a7sAovR4/viewform';
 
   return (
-    <section id="registration" className="py-16 md:py-24 relative">
-      <div className="container mx-auto px-4 md:px-8 max-w-4xl text-center">
-        <div className="glass p-8 sm:p-12 md:p-16 rounded-2xl sm:rounded-[3rem] relative overflow-hidden border-accent/20">
-          <div className="absolute -top-12 sm:-top-24 -right-12 sm:-right-24 w-48 sm:w-64 h-48 sm:h-64 bg-accent/10 blur-[80px] sm:blur-[100px] rounded-full" />
-          <div className="absolute -bottom-12 sm:-bottom-24 -left-12 sm:-left-24 w-48 sm:w-64 h-48 sm:h-64 bg-primary/10 blur-[80px] sm:blur-[100px] rounded-full" />
-          
+    <section id="registration" className="py-14 sm:py-20 md:py-24 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
+        <div className="glass relative overflow-hidden p-6 sm:p-10 md:p-14 lg:p-16 rounded-2xl sm:rounded-[2.5rem] border border-accent/20">
+          {/* Background Glow */}
+          <div className="pointer-events-none absolute -top-20 -right-20 w-48 sm:w-64 h-48 sm:h-64 bg-accent/10 blur-[80px] rounded-full" />
+          <div className="pointer-events-none absolute -bottom-20 -left-20 w-48 sm:w-64 h-48 sm:h-64 bg-primary/10 blur-[80px] rounded-full" />
+
           <div className="relative z-10 mb-8 md:mb-10">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black font-headline text-gradient mb-4 md:mb-6 uppercase leading-tight">JOIN THE ARENA</h2>
-            <p className="text-foreground/60 text-base md:text-lg max-w-2xl mx-auto mb-8">
-              Ready to showcase your technical prowess? Register now via our official Google Form to secure your participation.
+            <h2
+              className="font-black font-headline text-gradient uppercase leading-tight
+            text-[clamp(2rem,5vw,4rem)] mb-4 md:mb-6"
+            >
+              JOIN THE ARENA
+            </h2>
+
+            <p className="text-foreground/70 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+              Ready to showcase your technical prowess? Register now via our
+              official Google Form to secure your participation.
             </p>
-            <div className="flex items-center justify-center gap-2 text-accent font-headline tracking-widest text-xs md:text-sm uppercase mb-8">
-              <Utensils className="w-4 h-4" /> LUNCH WILL BE PROVIDED FOR ALL PARTICIPANTS
+
+            <div className="flex flex-wrap items-center justify-center gap-2 text-accent font-headline tracking-widest text-xs sm:text-sm uppercase mb-8">
+              <Utensils className="w-4 h-4" />
+              Lunch will be provided for all participants
             </div>
           </div>
 
-          <div className="relative z-10 flex flex-col items-center gap-6">
-            <Button 
+          {/* Button */}
+          <div className="relative z-10 flex flex-col items-center gap-5">
+            <Button
               asChild
-              className="w-full sm:w-auto h-12 md:h-16 px-8 md:px-12 text-base md:text-xl font-black font-headline tracking-[0.15em] bg-accent hover:bg-accent/80 text-background rounded-xl md:rounded-2xl neon-glow-cyan transform hover:scale-105 transition-all flex items-center justify-center gap-3"
+              className="w-full sm:w-auto min-h-[48px] sm:min-h-[56px] md:min-h-[64px]
+              px-6 sm:px-10 md:px-12
+              text-sm sm:text-lg md:text-xl
+              font-black font-headline tracking-[0.12em]
+              bg-accent hover:bg-accent/80
+              text-background
+              rounded-xl md:rounded-2xl
+              neon-glow-cyan
+              transition-all duration-300
+              hover:scale-[1.04]
+              flex items-center justify-center gap-3"
             >
               <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">
-                REGISTER ON GOOGLE FORMS <ExternalLink className="w-5 h-5 md:w-6 md:h-6" />
+                REGISTER ON GOOGLE FORMS
+                <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
             </Button>
-            <p className="text-foreground/40 text-[10px] md:text-xs font-headline tracking-widest uppercase">
+
+            <p className="text-foreground/40 text-[11px] sm:text-xs font-headline tracking-widest uppercase">
               Limited slots available. Register before March 20, 2026.
             </p>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
