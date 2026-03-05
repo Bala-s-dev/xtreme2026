@@ -3,7 +3,7 @@
 
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ChevronDown, MapPin, Clock, Calendar, Utensils } from "lucide-react"
+import { ChevronDown, MapPin, Clock, Calendar } from "lucide-react"
 import Countdown from "./Countdown"
 
 export default function Hero() {
@@ -49,7 +49,7 @@ export default function Hero() {
       <div className="z-10 max-w-5xl mx-auto space-y-6 md:space-y-10">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] md:text-xs font-headline tracking-widest uppercase">
-            <Utensils className="w-3 h-3" /> LUNCH WILL BE PROVIDED • MARCH 27, 2026
+            MARCH 27, 2026
           </div>
           <h2 className="text-foreground/60 font-headline tracking-[0.3em] md:tracking-[0.5em] text-[10px] sm:text-xs md:text-sm uppercase">
             Department of Computer Science & Engineering Presents
