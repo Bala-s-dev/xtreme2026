@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronDown } from "lucide-react"
+import Countdown from "./Countdown"
 
 export default function Hero() {
   const [text, setText] = useState("")
@@ -42,18 +43,22 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden pt-20">
-      <div className="z-10 max-w-5xl mx-auto space-y-6">
-        <h2 className="text-accent font-headline tracking-[0.5em] text-sm md:text-lg animate-pulse">
-          DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING PRESENTS
+      <div className="z-10 max-w-5xl mx-auto space-y-8">
+        <h2 className="text-accent font-headline tracking-[0.5em] text-sm md:text-lg animate-pulse uppercase">
+          Department of Computer Science & Engineering Presents
         </h2>
         
-        <div className="space-y-2">
-          <h1 className="text-6xl md:text-9xl font-black font-headline tracking-tighter text-gradient leading-none drop-shadow-[0_0_15px_rgba(138,43,226,0.6)]">
+        <div className="space-y-4">
+          <h1 className="text-6xl md:text-9xl font-black font-headline tracking-tighter text-gradient leading-none drop-shadow-[0_0_20px_rgba(138,43,226,0.6)]">
             XTREME 26
           </h1>
           <p className="text-xl md:text-3xl font-medium text-foreground/80 tracking-wide min-h-[1.5em] typing-cursor">
             {text}
           </p>
+        </div>
+
+        <div className="py-4">
+          <Countdown />
         </div>
 
         <div className="space-y-4">
@@ -63,7 +68,7 @@ export default function Hero() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-foreground/60 text-sm md:text-base font-medium">
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-secondary neon-glow-purple" />
-              MARCH 2026
+              MARCH 27, 2026
             </span>
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-accent neon-glow-cyan" />
@@ -72,12 +77,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
           <Button className="h-14 px-10 text-lg font-headline tracking-widest bg-accent hover:bg-accent/80 text-background rounded-full neon-glow-cyan transition-all duration-300 transform hover:scale-105">
             REGISTER NOW
           </Button>
-          <Button variant="outline" className="h-14 px-10 text-lg font-headline tracking-widest border-primary text-primary hover:bg-primary/10 rounded-full transition-all duration-300 transform hover:scale-105" onClick={() => document.getElementById('about')?.scrollIntoView()}>
-            EXPLORE EVENTS
+          <Button variant="outline" className="h-14 px-10 text-lg font-headline tracking-widest border-primary text-primary hover:bg-primary/10 rounded-full transition-all duration-300 transform hover:scale-105" onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}>
+            EXPLORE ARENA
           </Button>
         </div>
       </div>
