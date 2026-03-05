@@ -1,12 +1,32 @@
 "use client"
 
 const timeline = [
-  { time: "09:00 AM", title: "Inauguration", desc: "Welcome address and traditional lighting of the lamp at FX Main Auditorium." },
-  { time: "10:30 AM", title: "Technical Arena Round 1", desc: "Coding contests, paper presentations, and initial project demonstrations begin." },
-  { time: "01:00 PM", title: "Networking Lunch", desc: "Fuel up and interact with peers, faculty, and industry experts." },
-  { time: "02:00 PM", title: "Event Finales", desc: "Final evaluation rounds for all technical competitions." },
-  { time: "04:30 PM", title: "Valedictory & Awards", desc: "Grand prize distribution and closing ceremony." }
-]
+  {
+    time: '09:00 AM',
+    title: 'Inauguration',
+    desc: 'Official commencement of XTREME 26 with the welcome address and lighting of the lamp at FX Main Auditorium.',
+  },
+  {
+    time: '10:30 AM',
+    title: 'Morning Arena',
+    desc: 'Project Expo, Paperix, and Web Craft competitions kick off across their respective technical zones.',
+  },
+  {
+    time: '01:00 PM',
+    title: 'Networking Lunch',
+    desc: 'A scheduled break for all participants to refuel and network. Lunch is provided at the venue.',
+  },
+  {
+    time: '01:45 PM',
+    title: 'Afternoon Arena',
+    desc: 'High-intensity sessions for Bug Bounding, Quiz War, and Prompt Battle begin.',
+  },
+  {
+    time: '03:00 PM',
+    title: 'Valedictory & Awards',
+    desc: 'The grand closing ceremony where certificates and awards are distributed to the winners.',
+  },
+];  
 
 export default function Schedule() {
   return (

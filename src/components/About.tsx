@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react"
 import { Users, Trophy, School, Terminal } from "lucide-react"
 
 const stats = [
-  { label: "PARTICIPANTS", value: 1000, icon: Users, suffix: "+" },
+  { label: "PARTICIPANTS", value: 300, icon: Users, suffix: "+" },
   { label: "EVENTS", value: 6, icon: Trophy, suffix: "" },
   { label: "COLLEGES", value: 10, icon: School, suffix: "+" },
   { label: "INNOVATIONS", value: 50, icon: Terminal, suffix: "+" },
