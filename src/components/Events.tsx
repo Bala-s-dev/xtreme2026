@@ -1,176 +1,334 @@
-"use client"
+'use client';
 
-import { useState } from "react"
+import { useState } from 'react';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+} from '@/components/ui/dialog';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Rocket,
   FileText,
-  Code2,
-  Bug,
+  Globe,
+  Terminal,
   BrainCircuit,
   Sparkles,
   ArrowRight,
-} from "lucide-react"
+  MapPin,
+  Clock,
+  Users,
+  LucideIcon,
+  Zap,
+  X,
+} from 'lucide-react';
 
-const technicalEvents = [
+type EventType = {
+  title: string;
+  subtitle: string;
+  desc: string;
+  icon: LucideIcon;
+  tags: string[];
+  details: string;
+  rules: string[];
+  venue: string;
+  schedule: string;
+  teamSize: string;
+  image: string;
+};
+
+
+const technicalEvents: EventType[] = [
   {
-    title: "Project Expo",
-    desc: "Showcase innovative hardware and software solutions to industry experts.",
-    icon: Rocket,
-    tags: ["Innovation", "Hardware", "Software"],
-    details:
-      "A grand stage for innovators. Present IoT systems, AI tools, or next-gen hardware concepts. Projects are evaluated based on technical depth, real-world impact, and scalability.",
-  },
-  {
-    title: "Paperix",
-    desc: "Present research papers on emerging technologies and computing trends.",
+    title: 'Paper Presentation',
+
+    subtitle: 'Innovators Forum',
+
+    desc: 'Present research papers in IEEE format on emerging technologies.',
+
     icon: FileText,
-    tags: ["Research", "Presentation"],
+
+    tags: ['IEEE Format', 'Research'],
+
     details:
-      "Submit and present original research work across domains such as AI, Cybersecurity, Blockchain, and Quantum Computing. Judges evaluate novelty, clarity, and technical depth.",
+      'A platform for students to present original research. Submit your research paper in PDF format prepared in IEEE standards.',
+
+    venue: 'Seminar Hall – Block B',
+
+    schedule: '8 mins + 2 mins Q&A',
+
+    teamSize: 'Max 2 members',
+
+    image:
+      'https://img.freepik.com/free-vector/business-meeting-project-presentation-people-corporate-seminar-team-group-vector-illustration_1284-47646.jpg',
+
+    rules: [
+      'Maximum 3 participants per team.',
+
+      'Presentation time: 8 minutes + 2 minutes for questions.',
+
+      'Must bring presentation in PPT format',
+
+      "Judges' decision will be final and binding.",
+    ],
   },
+
   {
-    title: "Web Craft",
-    desc: "Design and develop responsive web applications under time pressure.",
-    icon: Code2,
-    tags: ["Frontend", "Backend", "UI/UX"],
+    title: 'Project Expo',
+
+    subtitle: 'Innovation Showcase',
+
+    desc: 'Showcase working models and innovative hardware/software solutions.',
+
+    icon: Rocket,
+
+    tags: ['Working Model', 'Innovation'],
+
     details:
-      "Participants build a functional web solution based on a surprise theme. Evaluation includes UI/UX design, code efficiency, performance, and feature completeness.",
+      'Present technically innovative or problem-solving oriented projects to a panel of experts.',
+
+    venue: 'Block A - Main Lobby',
+
+    schedule: '10 mins per team',
+
+    teamSize: 'Max 3 members',
+
+    image:
+      'https://img.freepik.com/free-vector/isometric-expo-flowchart-composition-with-isolated-s-exhibit-booths-stands-people-stage-performance_1284-27644.jpg?semt=ais_hybrid&w=740&q=80',
+
+    rules: [
+      'Maximum 3 members per team.',
+
+      'Participants must present a working model or prototype.',
+
+      'Project must be innovative and problem-solving oriented.',
+
+      'Evaluation: Innovation, practicality, and presentation.',
+
+      'Participants must arrange their own project materials.',
+    ],
   },
+
   {
-    title: "Bug Bounding",
-    desc: "Identify vulnerabilities and fix issues in complex software systems.",
-    icon: Bug,
-    tags: ["Debugging", "Security"],
+    title: 'Web Designing',
+
+    subtitle: 'Web Crafting',
+
+    desc: 'Design and develop responsive websites based on a surprise theme.',
+
+    icon: Globe,
+
+    tags: ['HTML/CSS', 'JavaScript'],
+
     details:
-      "Analyze real codebases and uncover hidden bugs, security flaws, and performance issues. Speed and accuracy determine the winners.",
+      'A high-pressure design challenge to create functional and aesthetic web interfaces.',
+
+    venue: 'Computer Lab 1',
+
+    schedule: '60 Minutes',
+
+    teamSize: '1 or 2 members',
+
+    image:
+      'https://img.freepik.com/free-photo/web-design-technology-browsing-programming-concept_53876-163260.jpg?semt=ais_hybrid&w=740&q=80',
+
+    rules: [
+      'Individual or team of 2 members allowed.',
+
+      'Design a website based on the given theme.',
+
+      'Internet access may be restricted and AI tools are not allowed.',
+
+      'Judging: Creativity, responsiveness, and functionality.',
+    ],
   },
+
   {
-    title: "Quiz War",
-    desc: "Compete in an intense technical quiz across computing domains.",
+    title: 'Code Debugging',
+
+    subtitle: 'Code Hunt',
+
+    desc: 'Identify and correct errors in programs across various languages.',
+
+    icon: Terminal,
+
+    tags: ['C/Python/Java', 'Logic'],
+
+    details:
+      'Find and fix bugs in code snippets within a strict time limit without internet resources.',
+
+    venue: 'Programming Lab',
+
+    schedule: '45 Minutes',
+
+    teamSize: 'Individual',
+
+    image:
+      'https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1000',
+
+    rules: [
+      'Individual participation.',
+
+      'Programs will contain errors that need correction.',
+
+      'Identify and correct errors within the time limit.',
+
+      'Languages: C, Java, or Python.',
+
+      'Time limit: 45 minutes.',
+
+      'Participants must not use internet resources.',
+    ],
+  },
+
+  {
+    title: 'Technical Quiz',
+
+    subtitle: 'Brain Byte Quiz',
+
+    desc: 'Compete in an intense multi-round technical quiz challenge.',
+
     icon: BrainCircuit,
-    tags: ["Knowledge", "Speed"],
+
+    tags: ['Rapid Fire', 'General Engg'],
+
     details:
-      "Test your technical knowledge through multiple rounds including rapid fire, buzzer challenges, and logical problem solving.",
+      'Test your knowledge across technology, programming, and general engineering concepts.',
+
+    venue: 'Main Auditorium',
+
+    schedule: '3 Rounds',
+
+    teamSize: 'Team of 2',
+
+    image:
+      'https://i.ytimg.com/vi/eBUWqcuu58c/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBUnzZg24L1N8Kqr1epNVuZDLLiNA',
+
+    rules: [
+      'Team of 2 participants.',
+
+      'Rounds: Technical, Rapid Fire, and Visual.',
+
+      'Covers technology, programming, and general engineering.',
+
+      'Must answer within the time limit given by the quiz master.',
+
+      "Judges' decision is final.",
+    ],
   },
+
   {
-    title: "Prompt Battle",
-    desc: "Use Generative AI tools to craft powerful prompts and creative outputs.",
+    title: 'Prompt Battle',
+
+    subtitle: 'AI Event',
+
+    desc: 'Master prompt engineering to generate creative AI outputs.',
+
     icon: Sparkles,
-    tags: ["GenAI", "Creativity"],
+
+    tags: ['GenAI', 'Prompt Engg'],
+
     details:
-      "Participants compete by generating the best AI outputs using advanced prompting strategies for text and images.",
+      'Generate creative outputs using AI tools based on specific tasks or themes provided.',
+
+    venue: 'AI Research Lab',
+
+    schedule: '30 Minutes',
+
+    teamSize: 'Individual',
+
+    image:
+      'https://www.shutterstock.com/image-vector/prompt-digital-icons-creative-concept-260nw-2705713619.jpg',
+
+    rules: [
+      'Individual participation.',
+
+      'Generate creative prompts using AI tools.',
+
+      'Specific tasks or themes will be assigned.',
+
+      'Time limit: 30 minutes.',
+
+      'Evaluation: Creativity, prompt effectiveness, output quality.',
+    ],
   },
-]
+];
+
+
 
 export default function Events() {
-  const [selectedEvent, setSelectedEvent] = useState<any>(null)
+  const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null);
 
   const googleFormUrl =
-    "https://docs.google.com/forms/d/1W9KAAuFQ--g223C8v_VN1JH46qBhgnNlVQ4a7sAovR4/viewform"
+    'https://docs.google.com/forms/d/1W9KAAuFQ--g223C8v_VN1JH46qBhgnNlVQ4a7sAovR4/viewform';
 
   return (
-    <section id="events" className="py-16 md:py-24 relative">
-      {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-accent/5 blur-[120px] rounded-full -z-10" />
-      <div className="absolute bottom-0 left-0 w-64 md:w-96 h-64 md:h-96 bg-primary/5 blur-[120px] rounded-full -z-10" />
+    <section
+      id="events"
+      className="py-24 relative bg-[#030712] text-white overflow-hidden min-h-screen"
+    >
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-600/20 blur-[120px] rounded-full -z-10 animate-pulse" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-purple-600/10 blur-[120px] rounded-full -z-10" />
 
-      <div className="container mx-auto px-4 md:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 md:mb-16">
-          <Badge
-            variant="outline"
-            className="border-accent/30 text-accent font-headline mb-4 uppercase tracking-[0.2em] px-4 py-1 text-xs"
-          >
-            Elite Competitions
-          </Badge>
-
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-black font-headline text-gradient mb-6 leading-tight">
-            TECHNICAL ARENA
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mb-16 space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="h-[2px] w-12 bg-cyan-400" />
+            <span className="text-cyan-400 uppercase tracking-[0.4em] text-xs font-black">
+              Arena 2026
+            </span>
+          </div>
+          <h2 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase leading-[0.9]">
+            Technical <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">
+              Arena
+            </span>
           </h2>
-
-          <p className="text-foreground/70 text-base md:text-xl leading-relaxed">
-            Push your limits across six specialized domains where knowledge
-            meets execution in the ultimate test of skill.
+          <p className="text-white/50 text-xl max-w-xl font-light leading-relaxed">
+            Push your limits across specialized domains where knowledge meets
+            execution.
           </p>
         </div>
 
-        {/* Event Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {technicalEvents.map((event) => (
             <div
               key={event.title}
               onClick={() => setSelectedEvent(event)}
-              className="glass p-6 md:p-8 rounded-2xl md:rounded-[2rem] group
-              hover:border-accent border-transparent transition-all duration-500
-              cursor-pointer flex flex-col h-full relative overflow-hidden"
+              className="group relative h-[480px] rounded-[2.5rem] overflow-hidden cursor-pointer border border-white/10 hover:border-cyan-400/50 transition-all duration-500 bg-[#0a0a0a]"
             >
-              {/* Hover Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <img
+                src={event.image}
+                alt={event.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/60 to-transparent" />
 
-              <div className="relative z-10 flex flex-col h-full">
-                {/* Icon */}
-                <div className="flex justify-between items-start mb-6">
-                  <div
-                    className="p-4 rounded-xl bg-white/5 group-hover:bg-accent/10
-                    transition-colors border border-white/5 group-hover:border-accent/20"
-                  >
-                    <event.icon className="w-7 h-7 text-accent group-hover:scale-110 transition-transform duration-500" />
+              <div className="relative h-full p-8 flex flex-col justify-end">
+                <div className="mb-4">
+                  <div className="p-3 w-fit rounded-xl bg-cyan-400 text-black mb-4 group-hover:scale-110 transition-transform">
+                    <event.icon className="w-6 h-6" />
                   </div>
-
                   <Badge
-                    variant="secondary"
-                    className="bg-primary/10 text-primary border-primary/20 text-[10px] uppercase"
+                    variant="outline"
+                    className="text-[10px] uppercase border-white/20 text-white/60 mb-2"
                   >
-                    TECHNICAL
+                    {event.subtitle}
                   </Badge>
+                  <h3 className="text-3xl font-black uppercase mb-2 group-hover:text-cyan-400 transition-colors">
+                    {event.title}
+                  </h3>
+                  <p className="text-white/60 text-sm line-clamp-2 font-medium">
+                    {event.desc}
+                  </p>
                 </div>
-
-                {/* Title */}
-                <h3
-                  className="text-xl md:text-2xl font-headline mb-3
-                  group-hover:text-accent transition-all duration-300
-                  group-hover:drop-shadow-[0_0_10px_rgba(0,245,255,0.6)]"
-                >
-                  {event.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-foreground/70 text-sm md:text-base mb-6 line-clamp-2 leading-relaxed">
-                  {event.desc}
-                </p>
-
-                {/* Tags */}
-                <div className="mt-auto flex flex-wrap gap-2 pt-4">
-                  {event.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] font-headline text-accent/80
-                      uppercase tracking-widest bg-accent/10 px-2 py-1
-                      rounded-md border border-accent/20"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <div
-                  className="pt-6 flex items-center gap-2 text-accent
-                  font-headline text-xs tracking-widest opacity-0
-                  group-hover:opacity-100 transition-all transform
-                  translate-y-2 group-hover:translate-y-0 uppercase"
-                >
-                  View Rules & Reg
-                  <ArrowRight className="w-4 h-4" />
+                <div className="flex items-center gap-3 text-cyan-400 font-black text-xs uppercase tracking-widest pt-4 border-t border-white/10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                  Full Dossier <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
             </div>
@@ -178,78 +336,144 @@ export default function Events() {
         </div>
       </div>
 
-      {/* Event Modal */}
-      <Dialog open={!!selectedEvent} onOpenChange={() => setSelectedEvent(null)}>
-        <DialogContent className="glass border-accent/20 md:max-w-2xl bg-background/95 backdrop-blur-2xl p-0 rounded-3xl overflow-hidden">
-          <div className="p-8 md:p-12 space-y-8 max-h-[90vh] overflow-y-auto">
-            <DialogHeader>
-              <div className="flex items-start gap-4 mb-6">
-                <div className="p-4 rounded-xl bg-accent/10 border border-accent/20">
-                  {selectedEvent?.icon && (
-                    <selectedEvent.icon className="w-10 h-10 text-accent" />
-                  )}
-                </div>
+      <Dialog
+        open={!!selectedEvent}
+        onOpenChange={(open) => !open && setSelectedEvent(null)}
+      >
+        <DialogContent className="sm:max-w-4xl bg-[#030712] border-white/10 p-0 rounded-[2rem] md:rounded-[3rem] overflow-hidden text-white outline-none max-h-[90vh] flex flex-col">
+          {/* Custom Close Button for visibility */}
+          <button
+            onClick={() => setSelectedEvent(null)}
+            className="absolute right-6 top-6 z-50 p-2 rounded-full bg-black/50 text-white hover:bg-cyan-400 hover:text-black transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
 
-                <div>
-                  <DialogTitle className="text-3xl md:text-4xl font-headline">
-                    {selectedEvent?.title}
+          {selectedEvent && (
+            <div className="flex flex-col h-full overflow-y-auto scrollbar-hide">
+              {/* Header Image Section */}
+              <div className="relative h-64 md:h-96 shrink-0">
+                <img
+                  src={selectedEvent.image}
+                  className="w-full h-full object-cover"
+                  alt={selectedEvent.title}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/20 to-transparent" />
+                <div className="absolute bottom-8 left-8 md:left-12 pr-12">
+                  <Badge className="bg-cyan-400 text-black hover:bg-cyan-400 border-none font-black mb-4">
+                    {selectedEvent.subtitle}
+                  </Badge>
+                  <DialogTitle className="text-4xl md:text-6xl font-black uppercase text-white">
+                    {selectedEvent.title}
                   </DialogTitle>
+                </div>
+              </div>
 
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {selectedEvent?.tags?.map((tag: string) => (
-                      <Badge
-                        key={tag}
-                        variant="outline"
-                        className="border-white/10 text-xs uppercase text-foreground/60"
+              {/* Content Section */}
+              <div className="p-6 md:p-12 pt-8">
+                <Tabs defaultValue="description" className="w-full">
+                  <TabsList className="w-full justify-start bg-white/5 rounded-2xl p-3 mb-8 border border-white/10">
+                    <TabsTrigger
+                      value="description"
+                      className="flex-1 rounded-xl data-[state=active]:bg-cyan-400 data-[state=active]:text-black font-black uppercase text-[14px] tracking-widest"
+                    >
+                      Info
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="rules"
+                      className="flex-1 rounded-xl data-[state=active]:bg-cyan-400 data-[state=active]:text-black font-black uppercase text-[14px] tracking-widest"
+                    >
+                      Rules
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="logistics"
+                      className="flex-1 rounded-xl data-[state=active]:bg-cyan-400 data-[state=active]:text-black font-black uppercase text-[14px] tracking-widest"
+                    >
+                      venue & Time
+                    </TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent
+                    value="description"
+                    className="mt-0 outline-none"
+                  >
+                    <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 relative overflow-hidden group">
+                      <Zap className="absolute top-[-20px] right-[-20px] w-32 h-32 text-cyan-400/10 rotate-12" />
+                      <p className="text-xl md:text-1xl text-white/90 leading-relaxed italic font-medium relative z-10">
+                        "{selectedEvent.details}"
+                      </p>
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent
+                    value="rules"
+                    className="mt-0 space-y-3 outline-none"
+                  >
+                    {selectedEvent.rules.map((rule, idx) => (
+                      <div
+                        key={idx}
+                        className="flex gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-400/30 transition-all"
                       >
-                        {tag}
-                      </Badge>
+                        <span className="text-cyan-400 font-black">
+                          {idx + 1}.
+                        </span>
+                        <p className="text-white/70 font-medium">{rule}</p>
+                      </div>
                     ))}
-                  </div>
-                </div>
-              </div>
+                  </TabsContent>
 
-              <DialogDescription className="text-foreground/70 text-lg leading-relaxed">
-                {selectedEvent?.details}
-              </DialogDescription>
-            </DialogHeader>
+                  <TabsContent
+                    value="logistics"
+                    className="mt-0 grid grid-cols-1 sm:grid-cols-3 gap-4 outline-none"
+                  >
+                    {[
+                      {
+                        icon: MapPin,
+                        label: 'Venue',
+                        value: selectedEvent.venue,
+                      },
+                      {
+                        icon: Clock,
+                        label: 'Time',
+                        value: selectedEvent.schedule,
+                      },
+                      {
+                        icon: Users,
+                        label: 'Team',
+                        value: selectedEvent.teamSize,
+                      },
+                    ].map((item, i) => (
+                      <div
+                        key={i}
+                        className="p-6 rounded-3xl bg-white/5 border border-white/10 text-center"
+                      >
+                        <item.icon className="w-6 h-6 text-cyan-400 mx-auto mb-4" />
+                        <h4 className="text-[10px] font-black uppercase text-white/40 tracking-widest mb-1">
+                          {item.label}
+                        </h4>
+                        <p className="font-bold text-lg">{item.value}</p>
+                      </div>
+                    ))}
+                  </TabsContent>
+                </Tabs>
 
-            {/* Prize + Eligibility */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
-                <span className="font-headline text-xs text-foreground/40 uppercase tracking-[0.2em]">
-                  FIRST PRIZE
-                </span>
-                <div className="font-headline text-2xl text-accent mt-2">
-                  TROPHY
-                </div>
-              </div>
-
-              <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
-                <span className="font-headline text-xs text-foreground/40 uppercase tracking-[0.2em]">
-                  ELIGIBILITY
-                </span>
-                <div className="font-headline text-lg text-foreground mt-2">
-                  UG / PG Students
-                </div>
+                <Button
+                  asChild
+                  className="w-full h-16 mt-12 rounded-2xl bg-cyan-400 text-black font-black tracking-widest uppercase hover:bg-cyan-300 transition-all shadow-[0_0_30px_rgba(34,211,238,0.3)]"
+                >
+                  <a
+                    href={googleFormUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Initialize Registration
+                  </a>
+                </Button>
               </div>
             </div>
-
-            {/* Register Button */}
-            <Button
-              asChild
-              className="w-full h-14 bg-accent text-background
-              font-black font-headline tracking-widest uppercase
-              hover:bg-accent/80 transition-all rounded-xl text-lg"
-            >
-              <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">
-                REGISTER NOW
-              </a>
-            </Button>
-          </div>
+          )}
         </DialogContent>
       </Dialog>
     </section>
-  )
+  );
 }
-
