@@ -41,224 +41,133 @@ type EventType = {
   image: string;
 };
 
-
 const technicalEvents: EventType[] = [
   {
     title: 'Paper Presentation',
-
     subtitle: 'Innovators Forum',
-
     desc: 'Present research papers in IEEE format on emerging technologies.',
-
     icon: FileText,
-
     tags: ['IEEE Format', 'Research'],
-
     details:
       'A platform for students to present original research. Submit your research paper in PDF format prepared in IEEE standards.',
-
     venue: 'Seminar Hall – Block B',
-
     schedule: '8 mins + 2 mins Q&A',
-
     teamSize: 'Max 2 members',
-
     image:
       'https://img.freepik.com/free-vector/business-meeting-project-presentation-people-corporate-seminar-team-group-vector-illustration_1284-47646.jpg',
-
     rules: [
       'Maximum 3 participants per team.',
-
       'Presentation time: 8 minutes + 2 minutes for questions.',
-
       'Must bring presentation in PPT format',
-
       "Judges' decision will be final and binding.",
     ],
   },
-
   {
     title: 'Project Expo',
-
     subtitle: 'Innovation Showcase',
-
     desc: 'Showcase working models and innovative hardware/software solutions.',
-
     icon: Rocket,
-
     tags: ['Working Model', 'Innovation'],
-
     details:
       'Present technically innovative or problem-solving oriented projects to a panel of experts.',
-
     venue: 'Block A - Main Lobby',
-
     schedule: '10 mins per team',
-
     teamSize: 'Max 3 members',
-
     image:
       'https://img.freepik.com/free-vector/isometric-expo-flowchart-composition-with-isolated-s-exhibit-booths-stands-people-stage-performance_1284-27644.jpg?semt=ais_hybrid&w=740&q=80',
-
     rules: [
       'Maximum 3 members per team.',
-
       'Participants must present a working model or prototype.',
-
       'Project must be innovative and problem-solving oriented.',
-
       'Evaluation: Innovation, practicality, and presentation.',
-
       'Participants must arrange their own project materials.',
     ],
   },
-
   {
     title: 'Web Designing',
-
     subtitle: 'Web Crafting',
-
     desc: 'Design and develop responsive websites based on a surprise theme.',
-
     icon: Globe,
-
     tags: ['HTML/CSS', 'JavaScript'],
-
     details:
       'A high-pressure design challenge to create functional and aesthetic web interfaces.',
-
     venue: 'Computer Lab 1',
-
     schedule: '60 Minutes',
-
     teamSize: '1 or 2 members',
-
     image:
       'https://img.freepik.com/free-photo/web-design-technology-browsing-programming-concept_53876-163260.jpg?semt=ais_hybrid&w=740&q=80',
-
     rules: [
       'Individual or team of 2 members allowed.',
-
       'Design a website based on the given theme.',
-
       'Internet access may be restricted and AI tools are not allowed.',
-
       'Judging: Creativity, responsiveness, and functionality.',
     ],
   },
-
   {
     title: 'Code Debugging',
-
     subtitle: 'Code Hunt',
-
     desc: 'Identify and correct errors in programs across various languages.',
-
     icon: Terminal,
-
     tags: ['C/Python/Java', 'Logic'],
-
     details:
       'Find and fix bugs in code snippets within a strict time limit without internet resources.',
-
     venue: 'Programming Lab',
-
     schedule: '45 Minutes',
-
     teamSize: 'Individual',
-
     image:
       'https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=1000',
-
     rules: [
       'Individual participation.',
-
       'Programs will contain errors that need correction.',
-
       'Identify and correct errors within the time limit.',
-
       'Languages: C, Java, or Python.',
-
       'Time limit: 45 minutes.',
-
       'Participants must not use internet resources.',
     ],
   },
-
   {
     title: 'Technical Quiz',
-
     subtitle: 'Brain Byte Quiz',
-
     desc: 'Compete in an intense multi-round technical quiz challenge.',
-
     icon: BrainCircuit,
-
     tags: ['Rapid Fire', 'General Engg'],
-
     details:
       'Test your knowledge across technology, programming, and general engineering concepts.',
-
     venue: 'Main Auditorium',
-
     schedule: '3 Rounds',
-
     teamSize: 'Team of 2',
-
     image:
       'https://i.ytimg.com/vi/eBUWqcuu58c/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBUnzZg24L1N8Kqr1epNVuZDLLiNA',
-
     rules: [
       'Team of 2 participants.',
-
       'Rounds: Technical, Rapid Fire, and Visual.',
-
       'Covers technology, programming, and general engineering.',
-
       'Must answer within the time limit given by the quiz master.',
-
       "Judges' decision is final.",
     ],
   },
-
   {
     title: 'Prompt Battle',
-
     subtitle: 'AI Event',
-
     desc: 'Master prompt engineering to generate creative AI outputs.',
-
     icon: Sparkles,
-
     tags: ['GenAI', 'Prompt Engg'],
-
     details:
       'Generate creative outputs using AI tools based on specific tasks or themes provided.',
-
     venue: 'AI Research Lab',
-
     schedule: '30 Minutes',
-
     teamSize: 'Individual',
-
     image:
       'https://www.shutterstock.com/image-vector/prompt-digital-icons-creative-concept-260nw-2705713619.jpg',
-
     rules: [
       'Individual participation.',
-
       'Generate creative prompts using AI tools.',
-
       'Specific tasks or themes will be assigned.',
-
       'Time limit: 30 minutes.',
-
       'Evaluation: Creativity, prompt effectiveness, output quality.',
     ],
   },
 ];
-
-
 
 export default function Events() {
   const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null);
@@ -340,8 +249,8 @@ export default function Events() {
         open={!!selectedEvent}
         onOpenChange={(open) => !open && setSelectedEvent(null)}
       >
-        <DialogContent className="sm:max-w-4xl bg-[#030712] border-white/10 p-0 rounded-[2rem] md:rounded-[3rem] overflow-hidden text-white outline-none max-h-[90vh] flex flex-col">
-          {/* Custom Close Button for visibility */}
+        {/* Added [&>button:last-child]:hidden to remove the default small X icon */}
+        <DialogContent className="sm:max-w-4xl bg-[#030712] border-white/10 p-0 rounded-[2rem] md:rounded-[3rem] overflow-hidden text-white outline-none max-h-[90vh] flex flex-col [&>button:last-child]:hidden">
           <button
             onClick={() => setSelectedEvent(null)}
             className="absolute right-6 top-6 z-50 p-2 rounded-full bg-black/50 text-white hover:bg-cyan-400 hover:text-black transition-colors"
@@ -351,7 +260,6 @@ export default function Events() {
 
           {selectedEvent && (
             <div className="flex flex-col h-full overflow-y-auto scrollbar-hide">
-              {/* Header Image Section */}
               <div className="relative h-64 md:h-96 shrink-0">
                 <img
                   src={selectedEvent.image}
@@ -369,7 +277,6 @@ export default function Events() {
                 </div>
               </div>
 
-              {/* Content Section */}
               <div className="p-6 md:p-12 pt-8">
                 <Tabs defaultValue="description" className="w-full">
                   <TabsList className="w-full justify-start bg-white/5 rounded-2xl p-3 mb-8 border border-white/10">
