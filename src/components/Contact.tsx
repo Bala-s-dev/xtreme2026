@@ -42,7 +42,7 @@ export default function Contact() {
                     IYYAPPAN V G
                   </div>
                   <div className="flex items-center gap-2 text-foreground/60 mt-1 text-sm">
-                    <Phone className="w-4 h-4 text-secondary" /> +91 9443670173
+                    <Phone className="w-4 h-4 text-secondary" /> +91 9789569527
                   </div>
                   <div className="text-lg md:text-xl font-headline group-hover:text-secondary transition-colors">
                     HARRISH M

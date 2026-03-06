@@ -34,57 +34,59 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? 'glass py-3 border-b border-accent/20'
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <span className="font-headline font-bold text-2xl tracking-tighter text-gradient">
-            XTREME 26
-          </span>
-        </a>
+    <>
+      <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? 'glass py-3 border-b border-accent/20'
+            : 'bg-transparent py-5'
+        }`}
+      >
+        <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2 group">
+            <span className="font-headline font-bold text-2xl tracking-tighter text-gradient">
+              XTREME 26
+            </span>
+          </a>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-sm font-medium hover:text-accent transition-colors tracking-widest uppercase hover:drop-shadow-[0_0_8px_rgba(0,245,255,0.8)]"
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium hover:text-accent transition-colors tracking-widest uppercase hover:drop-shadow-[0_0_8px_rgba(0,245,255,0.8)]"
+              >
+                {link.name}
+              </a>
+            ))}
+
+            <Button
+              asChild
+              variant="outline"
+              className="border-accent text-accent hover:bg-accent hover:text-background font-headline tracking-widest neon-glow-cyan"
             >
-              {link.name}
-            </a>
-          ))}
+              <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">
+                REGISTER
+              </a>
+            </Button>
+          </div>
 
-          <Button
-            asChild
-            variant="outline"
-            className="border-accent text-accent hover:bg-accent hover:text-background font-headline tracking-widest neon-glow-cyan"
+          {/* Mobile Menu Button */}
+          <button
+            aria-label="Open Menu"
+            className="md:hidden text-accent"
+            onClick={() => setIsOpen(true)}
           >
-            <a href={googleFormUrl} target="_blank" rel="noopener noreferrer">
-              REGISTER
-            </a>
-          </Button>
+            <Menu className="w-8 h-8" />
+          </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          aria-label="Open Menu"
-          className="md:hidden text-accent"
-          onClick={() => setIsOpen(true)}
-        >
-          <Menu className="w-8 h-8" />
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
+      {/* FULLSCREEN MOBILE MENU */}
       <div
-        className={`md:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-xl transition-transform duration-500 ${
+        className={`md:hidden fixed top-0 left-0 w-screen h-screen z-[100] bg-background/95 backdrop-blur-xl transition-transform duration-500 ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -100,7 +102,7 @@ export default function Navbar() {
         </div>
 
         {/* Menu Items */}
-        <div className="flex flex-col items-center justify-center h-full gap-10 px-6 text-center">
+        <div className="flex flex-col items-center justify-center h-full gap-10 px-6 text-center overflow-y-auto">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -123,6 +125,6 @@ export default function Navbar() {
           </Button>
         </div>
       </div>
-    </nav>
+    </>
   );
 }
