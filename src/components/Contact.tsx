@@ -63,13 +63,7 @@ export default function Contact() {
                 <Instagram className="w-5 h-5 md:w-6 md:h-6" />
               </a>
               <a
-                href="https://www.linkedin.com/school/fxengg"
-                className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:neon-glow-purple transition-all duration-300"
-              >
-                <Linkedin className="w-5 h-5 md:w-6 md:h-6" />
-              </a>
-              <a
-                href="#contact"
+                href="mailto:xtreme2026.online@gmail.com"
                 className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl glass flex items-center justify-center text-green-400 hover:bg-green-400 hover:text-background transition-all duration-300 shadow-green-400/10 shadow-lg"
               >
                 <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
