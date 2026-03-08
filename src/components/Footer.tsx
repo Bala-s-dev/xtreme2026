@@ -35,16 +35,6 @@ export default function Footer() {
                 <li><a href="#registration" className="hover:text-accent transition-colors">Register</a></li>
               </ul>
             </div>
-
-            <div className="space-y-6">
-              <h4 className="font-headline text-lg text-accent uppercase tracking-widest">SUPPORT</h4>
-              <ul className="space-y-3 text-foreground/60">
-                <li><a href="#" className="hover:text-accent transition-colors">Help Center</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Terms of Use</a></li>
-                <li><a href="#" className="hover:text-accent transition-colors">Sponsorships</a></li>
-              </ul>
-            </div>
           </div>
 
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-headline tracking-[0.3em] text-foreground/40 uppercase">
